@@ -71,6 +71,8 @@ void Error_Handler(void);
 #define US_ECHO_GPIO_Port GPIOA
 #define US_TRIGGER_Pin GPIO_PIN_3
 #define US_TRIGGER_GPIO_Port GPIOB
+#define ALARM_Pin GPIO_PIN_4
+#define ALARM_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

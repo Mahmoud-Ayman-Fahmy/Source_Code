@@ -409,7 +409,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(US_TRIGGER_GPIO_Port, US_TRIGGER_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, US_TRIGGER_Pin|ALARM_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : CO_SENSOR_Pin FB_SWITCH_Pin ACC_EN_Pin */
   GPIO_InitStruct.Pin = CO_SENSOR_Pin|FB_SWITCH_Pin|ACC_EN_Pin;
@@ -417,12 +417,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : US_TRIGGER_Pin */
-  GPIO_InitStruct.Pin = US_TRIGGER_Pin;
+  /*Configure GPIO pins : US_TRIGGER_Pin ALARM_Pin */
+  GPIO_InitStruct.Pin = US_TRIGGER_Pin|ALARM_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(US_TRIGGER_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
 
