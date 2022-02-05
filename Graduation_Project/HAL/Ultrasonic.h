@@ -5,6 +5,8 @@
 
 
 
+u8 USONIC_voidCalcDistance(void);
+
 
 
 #endif 
