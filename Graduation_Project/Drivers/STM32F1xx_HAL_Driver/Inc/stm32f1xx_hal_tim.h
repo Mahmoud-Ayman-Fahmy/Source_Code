@@ -62,9 +62,9 @@ typedef struct
   uint32_t RepetitionCounter;  /*!< Specifies the repetition counter value. Each time the RCR downcounter
                                     reaches zero, an update event is generated and counting restarts
                                     from the RCR value (N).
-                                    This means in PWM mode that (N+1) corresponds to:
-                                        - the number of PWM periods in edge-aligned mode
-                                        - the number of half PWM period in center-aligned mode
+                                    This means in  mode that (N+1) corresponds to:
+                                        - the number of  periods in edge-aligned mode
+                                        - the number of half  period in center-aligned mode
                                      GP timers: this parameter must be a number between Min_Data = 0x00 and
                                      Max_Data = 0xFF.
                                      Advanced timers: this parameter must be a number between Min_Data = 0x0000 and
@@ -80,7 +80,7 @@ typedef struct
 typedef struct
 {
   uint32_t OCMode;        /*!< Specifies the TIM mode.
-                               This parameter can be a value of @ref TIM_Output_Compare_and_PWM_modes */
+                               This parameter can be a value of @ref TIM_Output_Compare_and__modes */
 
   uint32_t Pulse;         /*!< Specifies the pulse value to be loaded into the Capture Compare Register.
                                This parameter can be a number between Min_Data = 0x0000 and Max_Data = 0xFFFF */
@@ -94,7 +94,7 @@ typedef struct
 
   uint32_t OCFastMode;    /*!< Specifies the Fast mode state.
                                This parameter can be a value of @ref TIM_Output_Fast_State
-                               @note This parameter is valid only in PWM1 and PWM2 mode. */
+                               @note This parameter is valid only in 1 and 2 mode. */
 
 
   uint32_t OCIdleState;   /*!< Specifies the TIM Output Compare pin state during Idle state.
@@ -112,7 +112,7 @@ typedef struct
 typedef struct
 {
   uint32_t OCMode;        /*!< Specifies the TIM mode.
-                               This parameter can be a value of @ref TIM_Output_Compare_and_PWM_modes */
+                               This parameter can be a value of @ref TIM_Output_Compare_and__modes */
 
   uint32_t Pulse;         /*!< Specifies the pulse value to be loaded into the Capture Compare Register.
                                This parameter can be a number between Min_Data = 0x0000 and Max_Data = 0xFFFF */
@@ -356,8 +356,8 @@ typedef struct
   void (* IC_MspDeInitCallback)(struct __TIM_HandleTypeDef *htim);              /*!< TIM IC Msp DeInit Callback                              */
   void (* OC_MspInitCallback)(struct __TIM_HandleTypeDef *htim);                /*!< TIM OC Msp Init Callback                                */
   void (* OC_MspDeInitCallback)(struct __TIM_HandleTypeDef *htim);              /*!< TIM OC Msp DeInit Callback                              */
-  void (* PWM_MspInitCallback)(struct __TIM_HandleTypeDef *htim);               /*!< TIM PWM Msp Init Callback                               */
-  void (* PWM_MspDeInitCallback)(struct __TIM_HandleTypeDef *htim);             /*!< TIM PWM Msp DeInit Callback                             */
+  void (* _MspInitCallback)(struct __TIM_HandleTypeDef *htim);               /*!< TIM  Msp Init Callback                               */
+  void (* _MspDeInitCallback)(struct __TIM_HandleTypeDef *htim);             /*!< TIM  Msp DeInit Callback                             */
   void (* OnePulse_MspInitCallback)(struct __TIM_HandleTypeDef *htim);          /*!< TIM One Pulse Msp Init Callback                         */
   void (* OnePulse_MspDeInitCallback)(struct __TIM_HandleTypeDef *htim);        /*!< TIM One Pulse Msp DeInit Callback                       */
   void (* Encoder_MspInitCallback)(struct __TIM_HandleTypeDef *htim);           /*!< TIM Encoder Msp Init Callback                           */
@@ -371,8 +371,8 @@ typedef struct
   void (* IC_CaptureCallback)(struct __TIM_HandleTypeDef *htim);                /*!< TIM Input Capture Callback                              */
   void (* IC_CaptureHalfCpltCallback)(struct __TIM_HandleTypeDef *htim);        /*!< TIM Input Capture half complete Callback                */
   void (* OC_DelayElapsedCallback)(struct __TIM_HandleTypeDef *htim);           /*!< TIM Output Compare Delay Elapsed Callback               */
-  void (* PWM_PulseFinishedCallback)(struct __TIM_HandleTypeDef *htim);         /*!< TIM PWM Pulse Finished Callback                         */
-  void (* PWM_PulseFinishedHalfCpltCallback)(struct __TIM_HandleTypeDef *htim); /*!< TIM PWM Pulse Finished half complete Callback           */
+  void (* _PulseFinishedCallback)(struct __TIM_HandleTypeDef *htim);         /*!< TIM  Pulse Finished Callback                         */
+  void (* _PulseFinishedHalfCpltCallback)(struct __TIM_HandleTypeDef *htim); /*!< TIM  Pulse Finished half complete Callback           */
   void (* ErrorCallback)(struct __TIM_HandleTypeDef *htim);                     /*!< TIM Error Callback                                      */
   void (* CommutationCallback)(struct __TIM_HandleTypeDef *htim);               /*!< TIM Commutation Callback                                */
   void (* CommutationHalfCpltCallback)(struct __TIM_HandleTypeDef *htim);       /*!< TIM Commutation half complete Callback                  */
@@ -392,8 +392,8 @@ typedef enum
   , HAL_TIM_IC_MSPDEINIT_CB_ID            = 0x03U   /*!< TIM IC MspDeInit Callback ID                              */
   , HAL_TIM_OC_MSPINIT_CB_ID              = 0x04U   /*!< TIM OC MspInit Callback ID                                */
   , HAL_TIM_OC_MSPDEINIT_CB_ID            = 0x05U   /*!< TIM OC MspDeInit Callback ID                              */
-  , HAL_TIM_PWM_MSPINIT_CB_ID             = 0x06U   /*!< TIM PWM MspInit Callback ID                               */
-  , HAL_TIM_PWM_MSPDEINIT_CB_ID           = 0x07U   /*!< TIM PWM MspDeInit Callback ID                             */
+  , HAL_TIM__MSPINIT_CB_ID             = 0x06U   /*!< TIM  MspInit Callback ID                               */
+  , HAL_TIM__MSPDEINIT_CB_ID           = 0x07U   /*!< TIM  MspDeInit Callback ID                             */
   , HAL_TIM_ONE_PULSE_MSPINIT_CB_ID       = 0x08U   /*!< TIM One Pulse MspInit Callback ID                         */
   , HAL_TIM_ONE_PULSE_MSPDEINIT_CB_ID     = 0x09U   /*!< TIM One Pulse MspDeInit Callback ID                       */
   , HAL_TIM_ENCODER_MSPINIT_CB_ID         = 0x0AU   /*!< TIM Encoder MspInit Callback ID                           */
@@ -408,8 +408,8 @@ typedef enum
   , HAL_TIM_IC_CAPTURE_CB_ID              = 0x12U   /*!< TIM Input Capture Callback ID                              */
   , HAL_TIM_IC_CAPTURE_HALF_CB_ID         = 0x13U   /*!< TIM Input Capture half complete Callback ID                */
   , HAL_TIM_OC_DELAY_ELAPSED_CB_ID        = 0x14U   /*!< TIM Output Compare Delay Elapsed Callback ID               */
-  , HAL_TIM_PWM_PULSE_FINISHED_CB_ID      = 0x15U   /*!< TIM PWM Pulse Finished Callback ID           */
-  , HAL_TIM_PWM_PULSE_FINISHED_HALF_CB_ID = 0x16U   /*!< TIM PWM Pulse Finished half complete Callback ID           */
+  , HAL_TIM__PULSE_FINISHED_CB_ID      = 0x15U   /*!< TIM  Pulse Finished Callback ID           */
+  , HAL_TIM__PULSE_FINISHED_HALF_CB_ID = 0x16U   /*!< TIM  Pulse Finished half complete Callback ID           */
   , HAL_TIM_ERROR_CB_ID                   = 0x17U   /*!< TIM Error Callback ID                                      */
   , HAL_TIM_COMMUTATION_CB_ID             = 0x18U   /*!< TIM Commutation Callback ID                                */
   , HAL_TIM_COMMUTATION_HALF_CB_ID        = 0x19U   /*!< TIM Commutation half complete Callback ID                  */
@@ -888,15 +888,15 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
   * @}
   */
 
-/** @defgroup TIM_Output_Compare_and_PWM_modes TIM Output Compare and PWM Modes
+/** @defgroup TIM_Output_Compare_and__modes TIM Output Compare and  Modes
   * @{
   */
 #define TIM_OCMODE_TIMING                   0x00000000U                                              /*!< Frozen                                 */
 #define TIM_OCMODE_ACTIVE                   TIM_CCMR1_OC1M_0                                         /*!< Set channel to active level on match   */
 #define TIM_OCMODE_INACTIVE                 TIM_CCMR1_OC1M_1                                         /*!< Set channel to inactive level on match */
 #define TIM_OCMODE_TOGGLE                   (TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_0)                    /*!< Toggle                                 */
-#define TIM_OCMODE_PWM1                     (TIM_CCMR1_OC1M_2 | TIM_CCMR1_OC1M_1)                    /*!< PWM mode 1                             */
-#define TIM_OCMODE_PWM2                     (TIM_CCMR1_OC1M_2 | TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_0) /*!< PWM mode 2                             */
+#define TIM_OCMODE_1                     (TIM_CCMR1_OC1M_2 | TIM_CCMR1_OC1M_1)                    /*!<  mode 1                             */
+#define TIM_OCMODE_2                     (TIM_CCMR1_OC1M_2 | TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_0) /*!<  mode 2                             */
 #define TIM_OCMODE_FORCED_ACTIVE            (TIM_CCMR1_OC1M_2 | TIM_CCMR1_OC1M_0)                    /*!< Force active level                     */
 #define TIM_OCMODE_FORCED_INACTIVE          TIM_CCMR1_OC1M_2                                         /*!< Force inactive level                   */
 /**
@@ -1033,8 +1033,8 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
                                                       (__HANDLE__)->IC_MspDeInitCallback         = NULL;            \
                                                       (__HANDLE__)->OC_MspInitCallback           = NULL;            \
                                                       (__HANDLE__)->OC_MspDeInitCallback         = NULL;            \
-                                                      (__HANDLE__)->PWM_MspInitCallback          = NULL;            \
-                                                      (__HANDLE__)->PWM_MspDeInitCallback        = NULL;            \
+                                                      (__HANDLE__)->_MspInitCallback          = NULL;            \
+                                                      (__HANDLE__)->_MspDeInitCallback        = NULL;            \
                                                       (__HANDLE__)->OnePulse_MspInitCallback     = NULL;            \
                                                       (__HANDLE__)->OnePulse_MspDeInitCallback   = NULL;            \
                                                       (__HANDLE__)->Encoder_MspInitCallback      = NULL;            \
@@ -1453,7 +1453,7 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
   * @note  When fast mode is enabled an active edge on the trigger input acts
   *        like a compare match on CCx output. Delay to sample the trigger
   *        input and to activate CCx output is reduced to 3 clock cycles.
-  * @note  Fast mode acts only if the channel is configured in PWM1 or PWM2 mode.
+  * @note  Fast mode acts only if the channel is configured in 1 or 2 mode.
   * @retval None
   */
 #define __HAL_TIM_ENABLE_OCxFAST(__HANDLE__, __CHANNEL__)    \
@@ -1714,8 +1714,8 @@ typedef  void (*pTIM_CallbackTypeDef)(TIM_HandleTypeDef *htim);  /*!< pointer to
                                      ((__MODE__) == TIM_SLAVEMODE_TRIGGER)   || \
                                      ((__MODE__) == TIM_SLAVEMODE_EXTERNAL1))
 
-#define IS_TIM_PWM_MODE(__MODE__) (((__MODE__) == TIM_OCMODE_PWM1)               || \
-                                   ((__MODE__) == TIM_OCMODE_PWM2))
+#define IS_TIM__MODE(__MODE__) (((__MODE__) == TIM_OCMODE_1)               || \
+                                   ((__MODE__) == TIM_OCMODE_2))
 
 #define IS_TIM_OC_MODE(__MODE__)  (((__MODE__) == TIM_OCMODE_TIMING)             || \
                                    ((__MODE__) == TIM_OCMODE_ACTIVE)             || \
@@ -1905,24 +1905,24 @@ HAL_StatusTypeDef HAL_TIM_OC_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel)
   * @}
   */
 
-/** @addtogroup TIM_Exported_Functions_Group3 TIM PWM functions
-  *  @brief   TIM PWM functions
+/** @addtogroup TIM_Exported_Functions_Group3 TIM  functions
+  *  @brief   TIM  functions
   * @{
   */
-/* Timer PWM functions ********************************************************/
-HAL_StatusTypeDef HAL_TIM_PWM_Init(TIM_HandleTypeDef *htim);
-HAL_StatusTypeDef HAL_TIM_PWM_DeInit(TIM_HandleTypeDef *htim);
-void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim);
-void HAL_TIM_PWM_MspDeInit(TIM_HandleTypeDef *htim);
+/* Timer  functions ********************************************************/
+HAL_StatusTypeDef HAL_TIM__Init(TIM_HandleTypeDef *htim);
+HAL_StatusTypeDef HAL_TIM__DeInit(TIM_HandleTypeDef *htim);
+void HAL_TIM__MspInit(TIM_HandleTypeDef *htim);
+void HAL_TIM__MspDeInit(TIM_HandleTypeDef *htim);
 /* Blocking mode: Polling */
-HAL_StatusTypeDef HAL_TIM_PWM_Start(TIM_HandleTypeDef *htim, uint32_t Channel);
-HAL_StatusTypeDef HAL_TIM_PWM_Stop(TIM_HandleTypeDef *htim, uint32_t Channel);
+HAL_StatusTypeDef HAL_TIM__Start(TIM_HandleTypeDef *htim, uint32_t Channel);
+HAL_StatusTypeDef HAL_TIM__Stop(TIM_HandleTypeDef *htim, uint32_t Channel);
 /* Non-Blocking mode: Interrupt */
-HAL_StatusTypeDef HAL_TIM_PWM_Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel);
-HAL_StatusTypeDef HAL_TIM_PWM_Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel);
+HAL_StatusTypeDef HAL_TIM__Start_IT(TIM_HandleTypeDef *htim, uint32_t Channel);
+HAL_StatusTypeDef HAL_TIM__Stop_IT(TIM_HandleTypeDef *htim, uint32_t Channel);
 /* Non-Blocking mode: DMA */
-HAL_StatusTypeDef HAL_TIM_PWM_Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel, uint32_t *pData, uint16_t Length);
-HAL_StatusTypeDef HAL_TIM_PWM_Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel);
+HAL_StatusTypeDef HAL_TIM__Start_DMA(TIM_HandleTypeDef *htim, uint32_t Channel, uint32_t *pData, uint16_t Length);
+HAL_StatusTypeDef HAL_TIM__Stop_DMA(TIM_HandleTypeDef *htim, uint32_t Channel);
 /**
   * @}
   */
@@ -2007,7 +2007,7 @@ void HAL_TIM_IRQHandler(TIM_HandleTypeDef *htim);
   */
 /* Control functions  *********************************************************/
 HAL_StatusTypeDef HAL_TIM_OC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_InitTypeDef *sConfig, uint32_t Channel);
-HAL_StatusTypeDef HAL_TIM_PWM_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_InitTypeDef *sConfig, uint32_t Channel);
+HAL_StatusTypeDef HAL_TIM__ConfigChannel(TIM_HandleTypeDef *htim, TIM_OC_InitTypeDef *sConfig, uint32_t Channel);
 HAL_StatusTypeDef HAL_TIM_IC_ConfigChannel(TIM_HandleTypeDef *htim, TIM_IC_InitTypeDef *sConfig, uint32_t Channel);
 HAL_StatusTypeDef HAL_TIM_OnePulse_ConfigChannel(TIM_HandleTypeDef *htim, TIM_OnePulse_InitTypeDef *sConfig,
                                                  uint32_t OutputChannel,  uint32_t InputChannel);
@@ -2045,8 +2045,8 @@ void HAL_TIM_PeriodElapsedHalfCpltCallback(TIM_HandleTypeDef *htim);
 void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim);
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim);
 void HAL_TIM_IC_CaptureHalfCpltCallback(TIM_HandleTypeDef *htim);
-void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim);
-void HAL_TIM_PWM_PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim);
+void HAL_TIM__PulseFinishedCallback(TIM_HandleTypeDef *htim);
+void HAL_TIM__PulseFinishedHalfCpltCallback(TIM_HandleTypeDef *htim);
 void HAL_TIM_TriggerCallback(TIM_HandleTypeDef *htim);
 void HAL_TIM_TriggerHalfCpltCallback(TIM_HandleTypeDef *htim);
 void HAL_TIM_ErrorCallback(TIM_HandleTypeDef *htim);
@@ -2069,7 +2069,7 @@ HAL_StatusTypeDef HAL_TIM_UnRegisterCallback(TIM_HandleTypeDef *htim, HAL_TIM_Ca
 /* Peripheral State functions  ************************************************/
 HAL_TIM_StateTypeDef HAL_TIM_Base_GetState(TIM_HandleTypeDef *htim);
 HAL_TIM_StateTypeDef HAL_TIM_OC_GetState(TIM_HandleTypeDef *htim);
-HAL_TIM_StateTypeDef HAL_TIM_PWM_GetState(TIM_HandleTypeDef *htim);
+HAL_TIM_StateTypeDef HAL_TIM__GetState(TIM_HandleTypeDef *htim);
 HAL_TIM_StateTypeDef HAL_TIM_IC_GetState(TIM_HandleTypeDef *htim);
 HAL_TIM_StateTypeDef HAL_TIM_OnePulse_GetState(TIM_HandleTypeDef *htim);
 HAL_TIM_StateTypeDef HAL_TIM_Encoder_GetState(TIM_HandleTypeDef *htim);

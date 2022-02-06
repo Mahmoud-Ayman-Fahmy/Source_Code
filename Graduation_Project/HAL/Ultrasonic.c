@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "Ultrasonic.h"
 
 #define usTIM TIM4
 
@@ -14,7 +14,7 @@ float distance;
 
 
 
-u8 USONIC_voidCalcDistance(copy_u8TrigPort , copy_u8TrigPin ){
+u8 USONIC_u8CalcDistance(copy_u8TrigPort , copy_u8TrigPin ){
 	//Set Trigger Pin to Low
 	HAL_GPIO_WritePin(copy_u8TrigPort , copy_u8TrigPin , GPIO_PIN_RESET);
 	usDelay(3);
@@ -44,6 +44,7 @@ u8 USONIC_voidCalcDistance(copy_u8TrigPort , copy_u8TrigPin ){
 		distance = 0.0f;
 
 	}
+	return distance ;
 }
 
 void usDelay(uint32_t uSec)
